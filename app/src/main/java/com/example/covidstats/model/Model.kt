@@ -24,7 +24,7 @@ class Model(context: Context) {
                     database.dao.getCountries()
                 }
                 if (countries.isEmpty()) {
-                    Log.d("MY COVID STATS", "No hay nada en la base de datos, voy a llamar a network.getCountries")
+                    Log.d("MY COVID STATS", "No hay nada en la base de datos, guardando nuevos datos...")
                     network.getCountries(Response.Listener {
                         GlobalScope.launch {
                             database.dao.insertCountries(it)
@@ -43,7 +43,7 @@ class Model(context: Context) {
                     database.dao.getRegions(country.id)
                 }
                 if (regions.isEmpty()) {
-                    Log.d("MY COVID STATS", "No hay nada en la base de datos, voy a llamar a network.getRegions")
+                    Log.d("MY COVID STATS", "No hay nada en la base de datos, guardando nuevos datos...")
                     network.getRegions(Response.Listener {
                         GlobalScope.launch {
                             database.dao.insertRegions(it)
@@ -62,7 +62,7 @@ class Model(context: Context) {
                 database.dao.getSubregions(region.id)
             }
             if (subregions.isEmpty()) {
-                Log.d("MY COVID STATS", "No hay nada en la base de datos, voy a llamar a network.getSubregions")
+                Log.d("MY COVID STATS", "No hay nada en la base de datos, guardando nuevos datos...")
                 network.getSubregions(Response.Listener {
                     GlobalScope.launch {
                         database.dao.insertSubregions(it)

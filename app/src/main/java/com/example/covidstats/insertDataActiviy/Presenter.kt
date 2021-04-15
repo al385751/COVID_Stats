@@ -28,7 +28,6 @@ class Presenter (val view: MainView, val model: Model) {
         Log.d("MY COVID STATS", "Voy a llamar a model.getCountries")
         model.getCountries(Response.Listener<List<Country>> { countries ->
             if (countries != null) {
-                Log.d("MY COVID STATS", "Estoy de vuelta en el onResponse de countries")
                 view.showCountries(countries)
                 view.progressBarVisible = false
                 view.countryVisible = true
@@ -66,7 +65,6 @@ class Presenter (val view: MainView, val model: Model) {
     fun getRegions() {
         model.getRegions(Response.Listener { regions ->
             if (regions != null) {
-                Log.d("MY COVID STATS", "Estoy de vuelta en el onResponse de regions")
                 view.showRegions(regions)
             } else {
                 view.showError("No regions in the returned list (possible bad JSON)")
@@ -101,7 +99,6 @@ class Presenter (val view: MainView, val model: Model) {
     fun getSubregions() {
         model.getSubregions(Response.Listener { subregions ->
             if (subregions != null) {
-                Log.d("MY COVID STATS", "Estoy de vuelta en el onResponse de subregions")
                 view.showSubregions(subregions)
             } else {
                 view.showError("No subregions in the returned list (possible bad JSON)")
