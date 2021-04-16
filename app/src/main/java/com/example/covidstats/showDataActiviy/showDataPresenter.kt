@@ -1,6 +1,7 @@
 package com.example.covidstats.showDataActiviy
 
 import com.android.volley.Response
+import com.android.volley.VolleyError
 import com.example.covidstats.aditionalClasses.DayData
 import com.example.covidstats.database.Country
 import com.example.covidstats.database.Region
@@ -23,7 +24,11 @@ class showDataPresenter (val view: ShowDataView, val model: Model) {
             } else {
                 view.showError("No data found for the introduced period (POSSIBLE BAD JSON)")
             }
-        }, Response.ErrorListener { error -> view.showError(error.toString()) }, country, fromDate, toDate)
+        }, Response.ErrorListener { error ->
+            if (error is VolleyError)
+                view.showError("Volley Error Timeout, connection lost with the network")
+            else view.showError(error.toString())
+        }, country, fromDate, toDate)
     }
 
     fun getRegionData(country: Country, region: Region, fromDate: String, toDate: String) {
@@ -35,7 +40,11 @@ class showDataPresenter (val view: ShowDataView, val model: Model) {
             } else {
                 view.showError("No data found for the introduced period (POSSIBLE BAD JSON)")
             }
-        }, Response.ErrorListener { error -> view.showError(error.toString()) }, country, region, fromDate, toDate)
+        }, Response.ErrorListener { error ->
+            if (error is VolleyError)
+                view.showError("Volley Error Timeout, connection lost with the network")
+            else view.showError(error.toString())
+        }, country, region, fromDate, toDate)
     }
 
     fun getSubregionData(country: Country, subregion: Subregion, fromDate: String, toDate: String) {
@@ -47,6 +56,10 @@ class showDataPresenter (val view: ShowDataView, val model: Model) {
             } else {
                 view.showError("No data found for the introduced period (POSSIBLE BAD JSON)")
             }
-        }, Response.ErrorListener { error -> view.showError(error.toString()) }, country, subregion, fromDate, toDate)
+        }, Response.ErrorListener { error ->
+            if (error is VolleyError)
+                view.showError("Volley Error Timeout, connection lost with the network")
+            else view.showError(error.toString())
+        }, country, subregion, fromDate, toDate)
     }
 }
