@@ -3,6 +3,7 @@ package com.example.covidstats.model
 import android.content.Context
 import android.util.Log
 import com.android.volley.Response
+import com.example.covidstats.aditionalClasses.DayData
 import com.example.covidstats.database.Country
 import com.example.covidstats.database.MyDatabase
 import com.example.covidstats.database.Region
@@ -11,6 +12,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.util.ArrayList
 
 class Model(context: Context) {
 
@@ -73,4 +75,19 @@ class Model(context: Context) {
             else
                 listener.onResponse(subregions)
         }
+
+    fun getCountryData(listener: Response.Listener<ArrayList<DayData>>, errorListener: Response.ErrorListener, country: Country, fromDate: String, toDate: String) {
+        Log.d("MY COVID STATS", "Voy a acceder a network.getCountryData")
+        network.getCountryData(listener, errorListener, country, fromDate, toDate)
     }
+
+    fun getRegionData(listener: Response.Listener<ArrayList<DayData>>, errorListener: Response.ErrorListener, country: Country, region: Region, fromDate: String, toDate: String) {
+        Log.d("MY COVID STATS", "Voy a acceder a network.getRegionData")
+        network.getRegionData(listener, errorListener, country, region, fromDate, toDate)
+    }
+
+    fun getSubegionData(listener: Response.Listener<ArrayList<DayData>>, errorListener: Response.ErrorListener, country: Country, subregion: Subregion, fromDate: String, toDate: String) {
+        Log.d("MY COVID STATS", "Voy a acceder a network.getSubregionData")
+        network.getSubregionData(listener, errorListener, country, subregion, fromDate, toDate)
+    }
+}

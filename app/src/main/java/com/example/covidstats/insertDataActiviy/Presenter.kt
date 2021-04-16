@@ -38,6 +38,18 @@ class Presenter (val view: MainView, val model: Model) {
         }, Response.ErrorListener { error -> view.showError(error.toString()) })
     }
 
+    fun getCountry() : Country {
+        return this.country!!
+    }
+
+    fun getRegion() : Region {
+        return this.region!!
+    }
+
+    fun getSubregion() : Subregion {
+        return this.subregion!!
+    }
+
     fun setChosenCountry(country: Country) {
         this.country = country
         Log.d("MY COVID STATS", "The country is chosen.")

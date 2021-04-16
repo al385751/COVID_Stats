@@ -269,7 +269,8 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun changeToDisplayCountryData(view: View) {
         val intent = Intent(this, ShowDataView::class.java)
-        intent.putExtra("Country", countryTextView.text.toString())
+        intent.putExtra("Country", presenter.getCountry().name)
+        intent.putExtra("CountryId", presenter.getCountry().id)
         intent.putExtra("FromDate", fromTextDate.text.toString())
         intent.putExtra("ToDate", toTextDate.text.toString())
         startActivity(intent)
@@ -277,8 +278,10 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun changeToDisplayRegionData(view: View) {
         val intent = Intent(this, ShowDataView::class.java)
-        intent.putExtra("Country", countryTextView.text.toString())
-        intent.putExtra("Region", regionTextView.text.toString())
+        intent.putExtra("Country", presenter.getCountry().name)
+        intent.putExtra("CountryId", presenter.getCountry().id)
+        intent.putExtra("Region", presenter.getRegion().name)
+        intent.putExtra("RegionId", presenter.getRegion().id)
         intent.putExtra("FromDate", fromTextDate.text.toString())
         intent.putExtra("ToDate", toTextDate.text.toString())
         startActivity(intent)
@@ -286,9 +289,12 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun changeToDisplaySubregionData(view: View) {
         val intent = Intent(this, ShowDataView::class.java)
-        intent.putExtra("Country", countryTextView.text.toString())
-        intent.putExtra("Region", regionTextView.text.toString())
-        intent.putExtra("Subregion", subregionTextView.text.toString())
+        intent.putExtra("Country", presenter.getCountry().name)
+        intent.putExtra("CountryId", presenter.getCountry().id)
+        intent.putExtra("Region", presenter.getRegion().name)
+        intent.putExtra("RegionId", presenter.getRegion().id)
+        intent.putExtra("Subregion", presenter.getSubregion().name)
+        intent.putExtra("SubregionId", presenter.getSubregion().id)
         intent.putExtra("FromDate", fromTextDate.text.toString())
         intent.putExtra("ToDate", toTextDate.text.toString())
         startActivity(intent)

@@ -26,9 +26,9 @@ class DayCardAdapter(val dayDataList: ArrayList<DayData>, val context: Context) 
     class DayHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun render(dayData: DayData) {
             view.findViewById<TextView>(R.id.dateTextView).text = dayData.date
-            view.findViewById<TextView>(R.id.confirmedAmountTextView).text = dayData.todayCases
-            view.findViewById<TextView>(R.id.deathsAmountTextView).text = dayData.todayDeaths
-            view.findViewById<TextView>(R.id.recoveredAmountTextView).text = dayData.todayRecovered
+            view.findViewById<TextView>(R.id.confirmedAmountTextView).text = dayData.todayTotalCases
+            view.findViewById<TextView>(R.id.deathsAmountTextView).text = dayData.todayTotalDeaths
+            view.findViewById<TextView>(R.id.recoveredAmountTextView).text = dayData.todayTotalRecovered
         }
     }
 }
