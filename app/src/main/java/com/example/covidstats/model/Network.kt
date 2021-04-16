@@ -2,9 +2,9 @@ package com.example.covidstats.model
 
 import android.content.Context
 import android.util.Log
+import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.covidstats.aditionalClasses.DayData
@@ -14,6 +14,7 @@ import com.example.covidstats.database.Subregion
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
+
 
 private const val BASE_URL = "https://api.covid19tracking.narrativa.com/api"
 
@@ -75,6 +76,7 @@ class Network private constructor (context: Context) {
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
                 { response -> processCountryData(response, listener, country) },
                 { error -> errorListener.onErrorResponse(error) })
+        jsonObjectRequest.setRetryPolicy(DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT))
         queue.add(jsonObjectRequest)
     }
 
@@ -85,6 +87,7 @@ class Network private constructor (context: Context) {
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
                 { response -> processRegionData(response, listener, country, region) },
                 { error -> errorListener.onErrorResponse(error) })
+        jsonObjectRequest.setRetryPolicy(DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT))
         queue.add(jsonObjectRequest)
     }
 
@@ -95,6 +98,7 @@ class Network private constructor (context: Context) {
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
                 { response -> processSubregionData(response, listener, country, subregion) },
                 { error -> errorListener.onErrorResponse(error) })
+        jsonObjectRequest.setRetryPolicy(DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT))
         queue.add(jsonObjectRequest)
     }
 
