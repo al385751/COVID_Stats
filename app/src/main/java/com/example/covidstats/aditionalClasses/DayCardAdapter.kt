@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.covidstats.R
 
-class DayCardAdapter(val dayDataList: ArrayList<DayData>, val context: Context) : RecyclerView.Adapter<DayCardAdapter.DayHolder>() {
+class DayCardAdapter(val dayDataList: ArrayList<DayData>, val onClickListener: (DayData) -> Unit) : RecyclerView.Adapter<DayCardAdapter.DayHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DayHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -21,6 +21,9 @@ class DayCardAdapter(val dayDataList: ArrayList<DayData>, val context: Context) 
 
     override fun onBindViewHolder(holder: DayHolder, position: Int) {
         holder.render(dayDataList[position])
+        holder.itemView.setOnClickListener {
+            onClickListener(dayDataList[position])
+        }
     }
 
     class DayHolder(val view: View) : RecyclerView.ViewHolder(view) {

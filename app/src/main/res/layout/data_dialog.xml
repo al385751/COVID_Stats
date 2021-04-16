@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/audiowide"
+        android:text="Spain (2021-03-03)"
+        android:textColor="#000000"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/todayTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="175dp"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/architects_daughter"
+        android:text="TODAY"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView" />
+
+    <TextView
+        android:id="@+id/confirmedTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/architects_daughter"
+        android:text="Confirmed cases"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/todayTitleText" />
+
+    <TextView
+        android:id="@+id/todayNumberConfirmed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="12548"
+        android:textColor="#707070"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/confirmedTitleText"
+        app:layout_constraintEnd_toEndOf="@+id/todayTitleText"
+        app:layout_constraintTop_toTopOf="@+id/confirmedTitleText" />
+
+    <TextView
+        android:id="@+id/todayNumberDeaths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="359"
+        android:textColor="#707070"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/deathsTitleText"
+        app:layout_constraintEnd_toEndOf="@+id/todayTitleText"
+        app:layout_constraintTop_toTopOf="@+id/deathsTitleText" />
+
+    <TextView
+        android:id="@+id/todayNumberRecovered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="27"
+        android:textColor="#707070"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/recoveredTitleText"
+        app:layout_constraintEnd_toEndOf="@+id/todayTitleText"
+        app:layout_constraintTop_toTopOf="@+id/recoveredTitleText" />
+
+    <TextView
+        android:id="@+id/totalNumberRecovered"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="9423"
+        android:textColor="#707070"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/recoveredTitleText"
+        app:layout_constraintEnd_toEndOf="@+id/totalTitleText"
+        app:layout_constraintTop_toTopOf="@+id/recoveredTitleText" />
+
+    <TextView
+        android:id="@+id/totalNumberConfirmed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="3987458"
+        android:textColor="#707070"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/confirmedTitleText"
+        app:layout_constraintEnd_toEndOf="@+id/totalTitleText"
+        app:layout_constraintTop_toTopOf="@+id/confirmedTitleText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/totalNumberDeaths"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/audiowide"
+        android:text="78420"
+        android:textColor="#707070"
+        android:textSize="11sp"
+        app:layout_constraintBottom_toBottomOf="@+id/deathsTitleText"
+        app:layout_constraintEnd_toEndOf="@+id/totalTitleText"
+        app:layout_constraintTop_toTopOf="@+id/deathsTitleText"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/deathsTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/architects_daughter"
+        android:text="Deaths"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/confirmedTitleText" />
+
+    <TextView
+        android:id="@+id/recoveredTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/architects_daughter"
+        android:text="Recovered"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deathsTitleText" />
+
+    <TextView
+        android:id="@+id/totalTitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:fontFamily="@font/architects_daughter"
+        android:text="TOTAL"
+        android:textColor="#000000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/todayTitleText"
+        app:layout_constraintStart_toEndOf="@+id/todayTitleText"
+        app:layout_constraintTop_toTopOf="@+id/todayTitleText" />
+</androidx.constraintlayout.widget.ConstraintLayout>

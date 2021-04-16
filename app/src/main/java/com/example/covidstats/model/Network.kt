@@ -114,12 +114,18 @@ class Network private constructor (context: Context) {
                         for (j in 0 until subregionsArray.length()) {
                             val subregionObject : JSONObject = subregionsArray[j] as JSONObject
                             if (subregionObject.getString(ID_LABEL) == subregion.id) {
-                                val totalConfirmed = subregionObject.optString(TODAY_TOTAL_CONFIRMED, "unknown")
-                                val totalDeaths = subregionObject.optString(TODAY_TOTAL_DEATHS, "unknown")
-                                val totalRecovered = subregionObject.optString(TODAY_TOTAL_RECOVERED, "unknown")
-                                val todayNewConfirmed = subregionObject.optString(TODAY_NEW_CONFIRMED, "unknown")
-                                val todayNewDeaths = subregionObject.optString(TODAY_NEW_DEATHS, "unknown")
-                                val todayNewRecovered = subregionObject.optString(TODAY_NEW_RECOVERED, "unknown")
+                                var totalConfirmed = subregionObject.optInt(TODAY_TOTAL_CONFIRMED, -1_000_000_000).toString()
+                                if (totalConfirmed == "-1000000000") totalConfirmed = "unknown"
+                                var totalDeaths = subregionObject.optInt(TODAY_TOTAL_DEATHS, -1_000_000_000).toString()
+                                if (totalDeaths == "-1000000000") totalDeaths = "unknown"
+                                var totalRecovered = subregionObject.optInt(TODAY_TOTAL_RECOVERED, -1_000_000_000).toString()
+                                if (totalRecovered == "-1000000000") totalRecovered = "unknown"
+                                var todayNewConfirmed = subregionObject.optInt(TODAY_NEW_CONFIRMED, -1_000_000_000).toString()
+                                if (todayNewConfirmed == "-1000000000") todayNewConfirmed = "unknown"
+                                var todayNewDeaths = subregionObject.optInt(TODAY_NEW_DEATHS, -1_000_000_000).toString()
+                                if (todayNewDeaths == "-1000000000") todayNewDeaths = "unknown"
+                                var todayNewRecovered = subregionObject.optInt(TODAY_NEW_RECOVERED, -1_000_000_000).toString()
+                                if (todayNewRecovered == "-1000000000") todayNewRecovered = "unknown"
                                 subregionData.add(DayData(data, todayNewConfirmed, totalConfirmed, todayNewDeaths, totalDeaths, todayNewRecovered, totalRecovered))
                             }
                         }
@@ -146,12 +152,18 @@ class Network private constructor (context: Context) {
                 for (i in 0 until regionsArray.length()) {
                     val regionObject : JSONObject = regionsArray[i] as JSONObject
                     if (regionObject.getString(ID_LABEL) == region.id) {
-                        val totalConfirmed = regionObject.optString(TODAY_TOTAL_CONFIRMED, "unknown")
-                        val totalDeaths = regionObject.optString(TODAY_TOTAL_DEATHS, "unknown")
-                        val totalRecovered = regionObject.optString(TODAY_TOTAL_RECOVERED, "unknown")
-                        val todayNewConfirmed = regionObject.optString(TODAY_NEW_CONFIRMED, "unknown")
-                        val todayNewDeaths = regionObject.optString(TODAY_NEW_DEATHS, "unknown")
-                        val todayNewRecovered = regionObject.optString(TODAY_NEW_RECOVERED, "unknown")
+                        var totalConfirmed = regionObject.optInt(TODAY_TOTAL_CONFIRMED, -1_000_000_000).toString()
+                        if (totalConfirmed == "-1000000000") totalConfirmed = "unknown"
+                        var totalDeaths = regionObject.optInt(TODAY_TOTAL_DEATHS, -1_000_000_000).toString()
+                        if (totalDeaths == "-1000000000") totalDeaths = "unknown"
+                        var totalRecovered = regionObject.optInt(TODAY_TOTAL_RECOVERED, -1_000_000_000).toString()
+                        if (totalRecovered == "-1000000000") totalRecovered = "unknown"
+                        var todayNewConfirmed = regionObject.optInt(TODAY_NEW_CONFIRMED, -1_000_000_000).toString()
+                        if (todayNewConfirmed == "-1000000000") todayNewConfirmed = "unknown"
+                        var todayNewDeaths = regionObject.optInt(TODAY_NEW_DEATHS, -1_000_000_000).toString()
+                        if (todayNewDeaths == "-1000000000") todayNewDeaths = "unknown"
+                        var todayNewRecovered = regionObject.optInt(TODAY_NEW_RECOVERED, -1_000_000_000).toString()
+                        if (todayNewRecovered == "-1000000000") todayNewRecovered = "unknown"
                         regionData.add(DayData(data, todayNewConfirmed, totalConfirmed, todayNewDeaths, totalDeaths, todayNewRecovered, totalRecovered))
                     }
                 }
@@ -172,12 +184,18 @@ class Network private constructor (context: Context) {
                 val dateObject : JSONObject = datesObject.getJSONObject(data)
                 val countriesObject : JSONObject = dateObject.getJSONObject(COUNTRIES)
                 val countryObject : JSONObject = countriesObject.getJSONObject(country.name)
-                val totalConfirmed = countryObject.optString(TODAY_TOTAL_CONFIRMED, "unknown")
-                val totalDeaths = countryObject.optString(TODAY_TOTAL_DEATHS, "unknown")
-                val totalRecovered = countryObject.optString(TODAY_TOTAL_RECOVERED, "unknown")
-                val todayNewConfirmed = countryObject.optString(TODAY_NEW_CONFIRMED, "unknown")
-                val todayNewDeaths = countryObject.optString(TODAY_NEW_DEATHS, "unknown")
-                val todayNewRecovered = countryObject.optString(TODAY_NEW_RECOVERED, "unknown")
+                var totalConfirmed = countryObject.optInt(TODAY_TOTAL_CONFIRMED, -1_000_000_000).toString()
+                if (totalConfirmed == "-1000000000") totalConfirmed = "unknown"
+                var totalDeaths = countryObject.optInt(TODAY_TOTAL_DEATHS, -1_000_000_000).toString()
+                if (totalDeaths == "-1000000000") totalDeaths = "unknown"
+                var totalRecovered = countryObject.optInt(TODAY_TOTAL_RECOVERED, -1_000_000_000).toString()
+                if (totalRecovered == "-1000000000") totalRecovered = "unknown"
+                var todayNewConfirmed = countryObject.optInt(TODAY_NEW_CONFIRMED, -1_000_000_000).toString()
+                if (todayNewConfirmed == "-1000000000") todayNewConfirmed = "unknown"
+                var todayNewDeaths = countryObject.optInt(TODAY_NEW_DEATHS, -1_000_000_000).toString()
+                if (todayNewDeaths == "-1000000000") todayNewDeaths = "unknown"
+                var todayNewRecovered = countryObject.optInt(TODAY_NEW_RECOVERED, -1_000_000_000).toString()
+                if (todayNewRecovered == "-1000000000") todayNewRecovered = "unknown"
                 countryData.add(DayData(data, todayNewConfirmed, totalConfirmed, todayNewDeaths, totalDeaths, todayNewRecovered, totalRecovered))
             }
         } catch (o: JSONException) {
