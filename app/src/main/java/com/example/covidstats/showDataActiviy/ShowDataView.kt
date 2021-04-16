@@ -32,12 +32,9 @@ class ShowDataView : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_showdata_main)
 
-        val selectedCountry: String = intent.getStringExtra("Country")!!
-        val selectedCountryId: String = intent.getStringExtra("CountryId")!!
-        val selectedRegion: String? = intent.getStringExtra("Region")
-        val selectedRegionId: String? = intent.getStringExtra("RegionId")
-        val selectedSubregion: String? = intent.getStringExtra("Subregion")
-        val selectedSubregionId: String? = intent.getStringExtra("SubregionId")
+        country = intent.getParcelableExtra("Country")
+        region = intent.getParcelableExtra("Region")
+        subregion = intent.getParcelableExtra("Subregion")
         val fromDate: String = intent.getStringExtra("FromDate")!!
         val toDate: String = intent.getStringExtra("ToDate")!!
 
@@ -47,36 +44,21 @@ class ShowDataView : AppCompatActivity() {
         val model = Model(applicationContext)
         presenter = showDataPresenter(this, model)
 
-        if (selectedSubregion != null) {
-            subregion = Subregion(selectedSubregion, selectedSubregionId!!, selectedCountryId, selectedRegionId!!)
-            country = Country(selectedCountry, selectedCountryId)
+        if (subregion != null) {
             title = subregion!!.name
             presenter.getSubregionData(country!!, subregion!!, fromDate, toDate)
         }
         else {
-            if (selectedRegion != null) {
-                region = Region(selectedRegion, selectedRegionId!!, selectedCountryId)
-                country = Country(selectedCountry, selectedCountryId)
+            if (region != null) {
                 title = region!!.name
                 presenter.getRegionData(country!!, region!!, fromDate, toDate)
             }
 
             else {
-                country = Country(selectedCountry, selectedCountryId)
                 title = country!!.name
                 presenter.getCountryData(country!!, fromDate, toDate)
             }
         }
-
-        val dayDatesList = ArrayList<DayData>()
-
-        dayDatesList.add(DayData("2020-03-09", "575", "845312", "5", "54", "842", "231045"))
-        dayDatesList.add(DayData("2020-03-09", "575", "845312", "5", "54", "842", "231045"))
-        dayDatesList.add(DayData("2020-03-09", "575", "845312", "5", "54", "842", "231045"))
-        dayDatesList.add(DayData("2020-03-09", "575", "845312", "5", "54", "842", "231045"))
-        dayDatesList.add(DayData("2020-03-09", "575", "845312", "5", "54", "842", "231045"))
-
-        createRecyclerView(dayDatesList)
     }
 
     var progressBarVisible: Boolean

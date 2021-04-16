@@ -68,6 +68,7 @@ class Presenter (val view: MainView, val model: Model) {
             } else {
                 this.region = null
                 view.regionVisible = false
+                view.subregionVisible = false
                 view.enableRegionOkButton = false
                 Log.d("MY COVID STATS", "NO hay regiones")
             }

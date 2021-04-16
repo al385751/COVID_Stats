@@ -269,8 +269,7 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun changeToDisplayCountryData(view: View) {
         val intent = Intent(this, ShowDataView::class.java)
-        intent.putExtra("Country", presenter.getCountry().name)
-        intent.putExtra("CountryId", presenter.getCountry().id)
+        intent.putExtra("Country", presenter.getCountry())
         intent.putExtra("FromDate", fromTextDate.text.toString())
         intent.putExtra("ToDate", toTextDate.text.toString())
         startActivity(intent)
@@ -278,10 +277,8 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun changeToDisplayRegionData(view: View) {
         val intent = Intent(this, ShowDataView::class.java)
-        intent.putExtra("Country", presenter.getCountry().name)
-        intent.putExtra("CountryId", presenter.getCountry().id)
-        intent.putExtra("Region", presenter.getRegion().name)
-        intent.putExtra("RegionId", presenter.getRegion().id)
+        intent.putExtra("Country", presenter.getCountry())
+        intent.putExtra("Region", presenter.getRegion())
         intent.putExtra("FromDate", fromTextDate.text.toString())
         intent.putExtra("ToDate", toTextDate.text.toString())
         startActivity(intent)
@@ -289,12 +286,9 @@ class MainActivity : AppCompatActivity(), MainView {
 
     override fun changeToDisplaySubregionData(view: View) {
         val intent = Intent(this, ShowDataView::class.java)
-        intent.putExtra("Country", presenter.getCountry().name)
-        intent.putExtra("CountryId", presenter.getCountry().id)
-        intent.putExtra("Region", presenter.getRegion().name)
-        intent.putExtra("RegionId", presenter.getRegion().id)
-        intent.putExtra("Subregion", presenter.getSubregion().name)
-        intent.putExtra("SubregionId", presenter.getSubregion().id)
+        intent.putExtra("Country", presenter.getCountry())
+        intent.putExtra("Region", presenter.getRegion())
+        intent.putExtra("Subregion", presenter.getSubregion())
         intent.putExtra("FromDate", fromTextDate.text.toString())
         intent.putExtra("ToDate", toTextDate.text.toString())
         startActivity(intent)
