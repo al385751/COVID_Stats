@@ -76,7 +76,7 @@ class Network private constructor (context: Context) {
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
                 { response -> processCountryData(response, listener, country) },
                 { error -> errorListener.onErrorResponse(error) })
-        jsonObjectRequest.setRetryPolicy(DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT))
+        jsonObjectRequest.setRetryPolicy(DefaultRetryPolicy(100000, 10, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT))
         queue.add(jsonObjectRequest)
     }
 
@@ -87,7 +87,7 @@ class Network private constructor (context: Context) {
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
                 { response -> processRegionData(response, listener, country, region) },
                 { error -> errorListener.onErrorResponse(error) })
-        jsonObjectRequest.setRetryPolicy(DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT))
+        jsonObjectRequest.setRetryPolicy(DefaultRetryPolicy(100000, 10, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT))
         queue.add(jsonObjectRequest)
     }
 
@@ -98,7 +98,7 @@ class Network private constructor (context: Context) {
         val jsonObjectRequest = JsonObjectRequest(Request.Method.GET, url, null,
                 { response -> processSubregionData(response, listener, country, subregion) },
                 { error -> errorListener.onErrorResponse(error) })
-        jsonObjectRequest.setRetryPolicy(DefaultRetryPolicy(50000, 5, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT))
+        jsonObjectRequest.setRetryPolicy(DefaultRetryPolicy(100000, 10, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT))
         queue.add(jsonObjectRequest)
     }
 
