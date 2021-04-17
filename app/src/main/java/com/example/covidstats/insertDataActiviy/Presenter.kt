@@ -132,7 +132,7 @@ class Presenter (val view: MainView, val model: Model) {
     fun updateFromDate(fromDate: String) {
         this.fromDate = fromDate
         if (this.toDate != null) {
-            if (fromDate.compareTo(this.toDate!!) < 0) {
+            if (fromDate.compareTo(this.toDate!!) <= 0) {
                 if (this.country != null && this.region != null && this.subregion != null) {
                     view.showError("Intervalo de fechas correcto, puede calcular los datos")
                     view.enableCountryOkButton = true
@@ -164,7 +164,7 @@ class Presenter (val view: MainView, val model: Model) {
     fun updateToDate(toDate: String) {
         this.toDate = toDate
         if (this.fromDate != null) {
-            if (toDate.compareTo(this.fromDate!!) > 0) {
+            if (toDate.compareTo(this.fromDate!!) >= 0) {
                 if (this.country != null && this.region != null && this.subregion != null) {
                     view.showError("Intervalo de fechas correcto, puede calcular los datos")
                     view.enableCountryOkButton = true

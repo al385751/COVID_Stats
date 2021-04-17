@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
 import androidx.fragment.app.DialogFragment
+import java.time.Month
 import java.util.*
 
 class DatePickerFragment : DialogFragment() {
@@ -20,14 +21,14 @@ class DatePickerFragment : DialogFragment() {
         val datePickerDialog = DatePickerDialog(context!!, listener, year - 18, month, day)
 
         // Min and max date
-        c.set(Calendar.YEAR, year - 1)
-        c.set(Calendar.MONTH, month - 3)
-        c.set(Calendar.DAY_OF_MONTH, day - 13)
-        datePickerDialog.datePicker.minDate = c.timeInMillis
         c.set(Calendar.YEAR, year)
         c.set(Calendar.MONTH, month)
         c.set(Calendar.DAY_OF_MONTH, day)
         datePickerDialog.datePicker.maxDate = c.timeInMillis
+        c.set(Calendar.YEAR, 2020)
+        c.set(Calendar.MONTH, 1)
+        c.set(Calendar.DAY_OF_MONTH, 23)
+        datePickerDialog.datePicker.minDate = c.timeInMillis
 
         return datePickerDialog
     }
